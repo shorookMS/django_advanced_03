@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from stores.views import store_list
+from stores import views
 from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('list/', store_list, name='list'),
+    path('list/', views.store_list, name='list'),
+    path('detail/<int:store_id>', views.store_detail, name='detial')
 ]
 
 urlpatterns+=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
